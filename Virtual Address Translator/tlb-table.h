@@ -9,5 +9,13 @@
 #ifndef tlb_table_h
 #define tlb_table_h
 
+template < class SETS, class PAGES >
+class TLB
+{
+private:
+    bool    valid;
+    int     tag;
+    int     phsyical_page;
+};
 
 #endif /* tlb_table_h */

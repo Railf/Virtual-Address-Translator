@@ -9,5 +9,12 @@
 #ifndef page_table_h
 #define page_table_h
 
+template < class SETS, class PAGES >
+class PageTable
+{
+private:
+    int     phsyical_page;
+    bool    resident;
+};
 
 #endif /* page_table_h */

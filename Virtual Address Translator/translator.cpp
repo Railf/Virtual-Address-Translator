@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include "virtual-tlb.h"
+#include "tlb-table.h"
+#include "page-table.h"
 
 int main() {
     unsigned int va = 0;
