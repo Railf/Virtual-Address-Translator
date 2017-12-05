@@ -9,12 +9,11 @@
 #ifndef page_table_h
 #define page_table_h
 
-template < class SETS, class PAGES >
-class PageTable
+template < size_t INDEX >
+struct PageTable
 {
-private:
-    int     phsyical_page;
-    bool    resident;
+    int     phsyical_page[INDEX];
+    bool    resident[INDEX];
 };
 
 #endif /* page_table_h */

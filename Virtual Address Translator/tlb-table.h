@@ -9,13 +9,12 @@
 #ifndef tlb_table_h
 #define tlb_table_h
 
-template < class SETS, class PAGES >
-class TLB
+template < size_t INDEX >
+struct TLB
 {
-private:
-    bool    valid;
-    int     tag;
-    int     phsyical_page;
+    bool    valid[INDEX];
+    int     tag[INDEX];
+    int     phsyical_page[INDEX];
 };
 
 #endif /* tlb_table_h */

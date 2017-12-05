@@ -14,6 +14,9 @@
 int main() {
     unsigned int va = 0;
     
+    TLB<2> tlb;
+    PageTable<2> pagetable;
+    
     while (va != 1)
     {
         std::cout << "Virtual address? ";
