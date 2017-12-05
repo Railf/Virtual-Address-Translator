@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E49EF23D1FD66E3F00EC4873 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E49EF23C1FD66E3F00EC4873 /* main.cpp */; };
+		E49EF23D1FD66E3F00EC4873 /* translator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E49EF23C1FD66E3F00EC4873 /* translator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,8 @@
 
 /* Begin PBXFileReference section */
 		E49EF2391FD66E3F00EC4873 /* Virtual Address Translator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Virtual Address Translator"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E49EF23C1FD66E3F00EC4873 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E49EF23C1FD66E3F00EC4873 /* translator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = translator.cpp; sourceTree = "<group>"; };
+		E49EF2431FD66F3E00EC4873 /* virtual-tlb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "virtual-tlb.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +58,8 @@
 		E49EF23B1FD66E3F00EC4873 /* Virtual Address Translator */ = {
 			isa = PBXGroup;
 			children = (
-				E49EF23C1FD66E3F00EC4873 /* main.cpp */,
+				E49EF23C1FD66E3F00EC4873 /* translator.cpp */,
+				E49EF2431FD66F3E00EC4873 /* virtual-tlb.h */,
 			);
 			path = "Virtual Address Translator";
 			sourceTree = "<group>";
@@ -119,7 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E49EF23D1FD66E3F00EC4873 /* main.cpp in Sources */,
+				E49EF23D1FD66E3F00EC4873 /* translator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
