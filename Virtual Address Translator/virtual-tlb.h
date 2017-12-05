@@ -11,7 +11,7 @@
 
 union
 {
-    unsigned int x;
+    unsigned int address;
     
     struct
     {

@@ -6,10 +6,14 @@
 //  Copyright © 2017 Railf. All rights reserved.
 //
 
-#include <iostream>
-#include "virtual-tlb.h"
-#include "tlb-table.h"
-#include "page-table.h"
+#include <iostream>         // std::cout, std::cin
+#include "virtual-tlb.h"    // Virtual and TLB bit calculation
+#include "tlb-table.h"      // Table of TLB: valid bit, tag, and physical address
+#include "page-table.h"     // Table of PageTable physical address and resident bit
+
+//===========================================
+//= FUNCTION MAIN
+//===========================================
 
 int main() {
     unsigned int va = 0;
@@ -22,7 +26,7 @@ int main() {
         std::cout << "Virtual address? ";
         std::cin >> std::hex >> va;
         
-        vir.x = va;
+        vir.address = va;
         
         std::cout << "Vir Page # : " << std::dec << vir.table.page << '\n';
         std::cout << "Page Offset: " << std::hex << vir.TLB.offset << '\n';
@@ -30,3 +34,7 @@ int main() {
         std::cout << "TLB Index  : " << std::dec << vir.TLB.index  << '\n' << '\n';
     }
 }
+
+//===========================================
+//= END = FUNCTION MAIN
+//===========================================
