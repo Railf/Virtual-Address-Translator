@@ -8,9 +8,23 @@
 
 #include <iostream>         // std::cout, std::cin
 #include <iomanip>          // std::setw
+#include <string>           // std::String
 #include "virtual-tlb.h"    // Virtual and TLB bit calculation
 #include "tlb-table.h"      // Table of TLB: valid bit, tag, and physical address
 #include "page-table.h"     // Table of PageTable physical address and resident bit
+
+//===========================================
+//= FUNCTION PROTOTYPES
+//===========================================
+
+std::string TLBResult (unsigned int index, unsigned int tag);
+std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumber);
+
+//===========================================
+//= END = FUNCTION PROTOTYPES
+//===========================================
+
+
 
 //===========================================
 //= FUNCTION MAIN
@@ -42,4 +56,38 @@ int main() {
 
 //===========================================
 //= END = FUNCTION MAIN
+//===========================================
+
+
+
+//===========================================
+//= FUNCTION TLBResult
+//===========================================
+
+std::string TLBResult (unsigned int index, unsigned int tag)
+{
+  std::string result = "";
+  
+  return result;
+}
+
+//===========================================
+//= END = FUNCTION TLBResult
+//===========================================
+
+
+
+//===========================================
+//= FUNCTION PageTableResult
+//===========================================
+
+std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumber)
+{
+  std::string result = "";
+  
+  return result;
+}
+
+//===========================================
+//= END = FUNCTION PageTableResult
 //===========================================
