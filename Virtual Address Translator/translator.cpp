@@ -31,27 +31,30 @@ std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumb
 //===========================================
 
 int main() {
-    unsigned int va = 0;
+  unsigned int va = 0;
+  
+  TLB<2> tlb;
+  PageTable<2> pagetable;
+  
+  while (va != 1)
+  {
+    std::cout << "Virtual address? ";
+    std::cin >> std::hex >> va;
     
-    TLB<2> tlb;
-    PageTable<2> pagetable;
+    vir.address = va;
     
-    while (va != 1)
-    {
-        std::cout << "Virtual address? ";
-        std::cin >> std::hex >> va;
-        
-        vir.address = va;
-        
-        std::cout << std::endl;
-        std::cout << "Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #" << '\n';
-        std::cout << "--------------  -----------  -------  ---------  ----------  ----------------  ---------------" << '\n';
-        std::cout << std::setw(14) << vir.table.page;
-        std::cout << std::setw(13) << vir.TLB.offset;
-        std::cout << std::setw(9)  << vir.TLB.tag;
-        std::cout << std::setw(11) << vir.TLB.index;
-        std::cout << std::endl << std::endl;
-    }
+    std::cout << std::endl;
+    std::cout << "Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #" << '\n';
+    std::cout << "--------------  -----------  -------  ---------  ----------  ----------------  ---------------" << '\n';
+    std::cout << std::setw(14) << vir.table.page;
+    std::cout << std::setw(13) << vir.TLB.offset;
+    std::cout << std::setw(9)  << vir.TLB.tag;
+    std::cout << std::setw(11) << vir.TLB.index;
+    std::cout << std::setw(12) << TLBResult(vir.TLB.index, vir.TLB.tag);
+    std::cout << std::setw(18) << PageTableResult(TLBResult(vir.TLB.index, vir.TLB.tag), vir.table.page);
+    std::cout << std::setw(17) << tlb.phsyical_page[vir.TLB.index];
+    std::cout << std::endl << std::endl;
+  }
 }
 
 //===========================================
