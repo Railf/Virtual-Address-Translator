@@ -12,8 +12,8 @@
 //                                  | PHSYICAL PAGE # | RESIDENT BIT |
 struct PageTable
 {
-  int     phsyical_page  = 0;
-  bool    resident       = 0;
+  int     phsyicalpage  = 0;
+  bool    resident      = 0;
 };
 
 #endif /* page_table_h */

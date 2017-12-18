@@ -19,8 +19,7 @@ union
         unsigned int index:1;
         unsigned int tag:6;
     } TLB;
-    
-    
+  
     struct
     {
         unsigned int offset:13;

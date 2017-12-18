@@ -12,9 +12,9 @@
 //                                  | VALID BIT | TAG | PHSYICAL PAGE # |
 struct TLB
 {
-  bool    valid          = 0;
-  int     tag            = 0;
-  int     phsyical_page  = 0;
+  bool    valid         = 0;
+  int     tag           = 0;
+  int     phsyicalpage  = 0;
 };
 
 #endif /* tlb_table_h */
