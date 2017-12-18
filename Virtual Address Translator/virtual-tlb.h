@@ -27,6 +27,6 @@ union
         unsigned int page:7;
     }table;
     
-} vir;
+} v;
 
 #endif /* virtual_tlb_h */

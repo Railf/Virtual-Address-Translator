@@ -9,6 +9,8 @@
 #ifndef page_table_h
 #define page_table_h
 
+//                                  | PHSYICAL PAGE # | RESIDENT BIT |
+
 template < size_t INDEX >
 struct PageTable
 {

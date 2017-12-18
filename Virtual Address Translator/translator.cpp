@@ -17,8 +17,9 @@
 //= FUNCTION PROTOTYPES
 //===========================================
 
-std::string TLBResult (unsigned int index, unsigned int tag);
+std::string TLBResult       (unsigned int index, unsigned int tag);
 std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumber);
+void        UpdateTables    ();
 
 //===========================================
 //= END = FUNCTION PROTOTYPES
@@ -31,29 +32,31 @@ std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumb
 //===========================================
 
 int main() {
-  unsigned int va = 0;
+  unsigned int virtualaddress = 0;
   
-  TLB<2> tlb;
-  PageTable<2> pagetable;
+  TLB<2>        tlbtable;
+  PageTable<2>  pagetable;
   
-  while (va != 1)
+  while (virtualaddress != 1)
   {
-    std::cout << "Virtual address? ";
-    std::cin >> std::hex >> va;
-    
-    vir.address = va;
-    
-    std::cout << std::endl;
-    std::cout << "Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #" << '\n';
-    std::cout << "--------------  -----------  -------  ---------  ----------  ----------------  ---------------" << '\n';
-    std::cout << std::setw(14) << vir.table.page;
-    std::cout << std::setw(13) << vir.TLB.offset;
-    std::cout << std::setw(9)  << vir.TLB.tag;
-    std::cout << std::setw(11) << vir.TLB.index;
-    std::cout << std::setw(12) << TLBResult(vir.TLB.index, vir.TLB.tag);
-    std::cout << std::setw(18) << PageTableResult(TLBResult(vir.TLB.index, vir.TLB.tag), vir.table.page);
-    std::cout << std::setw(17) << tlb.phsyical_page[vir.TLB.index];
-    std::cout << std::endl << std::endl;
+      std::cout << "Virtual address? ";
+      std::cin >> std::hex >> virtualaddress;
+      
+      v.address = virtualaddress;
+      
+      std::cout << std::endl;
+      std::cout << "Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #";
+      std::cout << std::endl;
+      std::cout << "--------------  -----------  -------  ---------  ----------  ----------------  ---------------";
+      std::cout << std::endl;
+      std::cout << std::setw(14) << v.table.page;
+      std::cout << std::setw(13) << v.TLB.offset;
+      std::cout << std::setw(9)  << v.TLB.tag;
+      std::cout << std::setw(11) << v.TLB.index;
+      std::cout << std::setw(12) << TLBResult(v.TLB.index, v.TLB.tag);
+      std::cout << std::setw(18) << PageTableResult(TLBResult(v.TLB.index, v.TLB.tag), v.table.page);
+      std::cout << std::setw(17) << tlbtable.phsyical_page[v.TLB.index];
+      std::cout << std::endl << std::endl;
   }
 }
 
@@ -93,4 +96,18 @@ std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumb
 
 //===========================================
 //= END = FUNCTION PageTableResult
+//===========================================
+
+
+//===========================================
+//= FUNCTION UpdateTables
+//===========================================
+
+void UpdateTables ()
+{
+    
+}
+
+//===========================================
+//= END = FUNCTION UpdateTables
 //===========================================

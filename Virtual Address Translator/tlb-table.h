@@ -9,6 +9,8 @@
 #ifndef tlb_table_h
 #define tlb_table_h
 
+//                                  | VALID BIT | TAG | PHSYICAL PAGE # |
+
 template < size_t INDEX >
 struct TLB
 {
