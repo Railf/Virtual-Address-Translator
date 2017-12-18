@@ -10,13 +10,11 @@
 #define tlb_table_h
 
 //                                  | VALID BIT | TAG | PHSYICAL PAGE # |
-
-template < size_t INDEX >
 struct TLB
 {
-    bool    valid[INDEX];
-    int     tag[INDEX];
-    int     phsyical_page[INDEX];
+  bool    valid          = 0;
+  int     tag            = 0;
+  int     phsyical_page  = 0;
 };
 
 #endif /* tlb_table_h */

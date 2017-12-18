@@ -25,7 +25,7 @@ union
     {
         unsigned int offset:13;
         unsigned int page:7;
-    }table;
+    } TABLE;
     
 } v;
 

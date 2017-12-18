@@ -10,12 +10,10 @@
 #define page_table_h
 
 //                                  | PHSYICAL PAGE # | RESIDENT BIT |
-
-template < size_t INDEX >
 struct PageTable
 {
-    int     phsyical_page[INDEX];
-    bool    resident[INDEX];
+  int     phsyical_page  = 0;
+  bool    resident       = 0;
 };
 
 #endif /* page_table_h */
