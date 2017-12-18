@@ -89,7 +89,7 @@ int main() {
   //=======================================
   
   std::cout << std::endl;
-  std::cout << "    SYSTEM DATA";
+  std::cout << "    CALCULATED SYSTEM DATA";
   std::cout << std::endl << std::endl;
   std::cout << "Number of Virtual Pages:  " << virtualpages   << '\n';
   std::cout << "Number of Physical Pages: " << physicalpages  << '\n';
@@ -105,7 +105,7 @@ int main() {
   std::queue<unsigned int> addresses;
   
   std::cout << std::endl;
-  std::cout << "    TRANSLATION";
+  std::cout << "    BEGIN TRANSLATION";
   std::cout << std::endl << std::endl;
   std::cout << "Enter virtual address(es), followed by a newline (1 to stop):\n\n";
   
