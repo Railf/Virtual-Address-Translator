@@ -48,9 +48,9 @@ int main() {
   //= PRINT HEADER
   //=======================================
   
-  std::cout << "==============================================================================================" << '\n';
-  std::cout << "= Virtual Address Translator                                                 = Version 0.0.0 =" << '\n';
-  std::cout << "==============================================================================================" << '\n';
+  std::cout << "=================================================================" << '\n';
+  std::cout << "= Virtual Address Translator | Point of Concept | Version 0.0.0 =" << '\n';
+  std::cout << "=================================================================" << '\n';
   
   //=======================================
   //= OBTAIN DATA
@@ -89,6 +89,7 @@ int main() {
   //=======================================
   
   std::cout << std::endl;
+  std::cout << std::endl;
   std::cout << "    CALCULATED SYSTEM DATA";
   std::cout << std::endl << std::endl;
   std::cout << "Number of Virtual Pages:  " << virtualpages   << '\n';
@@ -105,15 +106,16 @@ int main() {
   std::queue<unsigned int> addresses;
   
   std::cout << std::endl;
+  std::cout << std::endl;
   std::cout << "    BEGIN TRANSLATION";
   std::cout << std::endl << std::endl;
-  std::cout << "Enter virtual address(es), followed by a newline (1 to stop):\n\n";
+  std::cout << "Enter virtual address(es), followed by a newline (0xDEAD to stop):\n\n";
   
-  while (tempaddress != 1)
+  while (tempaddress != 0xDEAD)
   {
     std::cin >> std::hex >> tempaddress;
     
-    if (tempaddress == 1)
+    if (tempaddress == 0xDEAD)
     {
       continue;
     }
@@ -126,21 +128,25 @@ int main() {
   //=======================================
   
   std::cout << std::endl;
-  std::cout << "Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #\n";
-  std::cout << "--------------  -----------  -------  ---------  ----------  ----------------  ---------------\n";
+  std::cout << std::endl;
+  std::cout << "    TRANSLATION TABLE";
+  std::cout << std::endl << std::endl;
+  std::cout << "Virtual Address  Virtual Page #  Page Offset  TLB Tag  TLB Index  TLB Result  PageTable Result  Physical Page #\n";
+  std::cout << "---------------  --------------  -----------  -------  ---------  ----------  ----------------  ---------------\n";
   
   while (!addresses.empty())
   {
     v.address = addresses.front();
     
-    std::cout << std::setw(14) << v.TABLE.page;
-    std::cout << std::setw(13) << v.TLB.offset;
-    std::cout << std::setw(9)  << v.TLB.tag;
-    std::cout << std::setw(11) << v.TLB.index;
+    std::cout << std::setw(15) << std::hex << addresses.front();
+    std::cout << std::setw(16) << std::dec << v.TABLE.page;
+    std::cout << std::setw(13) << std::dec << v.TLB.offset;
+    std::cout << std::setw(9)  << std::dec << v.TLB.tag;
+    std::cout << std::setw(11) << std::dec << v.TLB.index;
     std::cout << std::setw(12) << TLBResult(tlbtable, v.TLB.index, v.TLB.tag);
     std::cout << std::setw(18) << PageTableResult(TLBResult(tlbtable, v.TLB.index, v.TLB.tag), v.TABLE.page);
-    std::cout << std::setw(17) << tlbtable[v.TLB.index].phsyicalpage;
-    std::cout << std::endl;
+    std::cout << std::setw(17) << std::dec << tlbtable[v.TLB.index].phsyicalpage;
+    std::cout << std::endl     << std::endl;
       
     UpdateTables(tlbtable, pagetable);
     addresses.pop();
