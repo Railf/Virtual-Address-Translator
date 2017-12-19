@@ -80,28 +80,8 @@ int main() {
   //= TABLES
   //=======================================
   
-  TLB       tlbtable  [index];
-  PageTable pagetable [index];
-  
-  for (int i = 0; i <= index; ++i)
-  {
-    tlbtable[i].valid         = 0;
-    tlbtable[i].tag           = 0;
-    tlbtable[i].phsyicalpage  = 0;
-    
-    pagetable[i].phsyicalpage = 0;
-    pagetable[i].resident     = 0;
-  }
-  
-//  for (size_t i = 0; i < index; ++i)
-//  {
-//    tlbtable[i].valid         = 0;
-//    tlbtable[i].tag           = 0;
-//    tlbtable[i].phsyicalpage  = 0;
-//
-//    pagetable[i].phsyicalpage = 0;
-//    pagetable[i].resident     = 0;
-//  }
+  TLB       tlbtable  [sets];
+  PageTable pagetable [sets];
   
   //=======================================
   //= PRINT MEMORY DATA
