@@ -217,7 +217,7 @@ std::string TLBResult (const TLB* tlb, const unsigned int index, const unsigned 
   //= HIT
   //=======================================
   
-  else
+  else if ((tlb[index].valid == 1) && (tlb[index].tag == tag))
   {
     result = "hit";
   }
