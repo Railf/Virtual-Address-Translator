@@ -12,7 +12,6 @@
 #include <queue>            // std::queue
 #include <cmath>            // log2, pow
 
-#include "virtual-tlb.h"    // Virtual and TLB bit calculation
 #include "tlb-table.h"      // Table of TLB: valid bit, tag, and physical address
 #include "page-table.h"     // Table of PageTable physical address and resident bit
 
@@ -138,19 +137,50 @@ int main() {
   {
     v.address = addresses.front();
     
+    //==================================
+    //= DATA CALCULATIONS
+    //==================================
+    // Dynamic based on gathered data.
+    
+    unsigned int address      = addresses.front();
+    unsigned int virtualpage = 0;
+    
+    // OFFSET
+    // bits = ceil( log2 ( linesize ) )
+    
+    offset  = address & (pagesize - 1);                                     // bit mask
+    address = address >> static_cast<unsigned int>(ceil(log2(pagesize)));   // bit string shift amount
+    
+    // PHYSICAL PAGE NUMBER
+    // bits = ( tag + index ) - offset
+    virtualpage = address;
+    
+    // INDEX
+    // bits = ceil( log2 ( sets ) )
+    
+    index   = address & (sets - 1);                                         // bit mask
+    address = address >> static_cast<unsigned int>(ceil(log2(sets)));       // bit string shift amount
+    
+    // TAG
+    // bits = 32 - ( index + offset )
+    
+    tag = address;
+    
     std::cout << std::setw(15) << std::hex << addresses.front();
-    std::cout << std::setw(16) << std::dec << v.TABLE.page;
-    std::cout << std::setw(13) << std::dec << v.TLB.offset;
-    std::cout << std::setw(9)  << std::dec << v.TLB.tag;
-    std::cout << std::setw(11) << std::dec << v.TLB.index;
+    std::cout << std::setw(16) << std::dec << virtualpage;
+    std::cout << std::setw(13) << std::dec << offset;
+    std::cout << std::setw(9)  << std::dec << tag;
+    std::cout << std::setw(11) << std::dec << index;
     std::cout << std::setw(12) << TLBResult(tlbtable, v.TLB.index, v.TLB.tag);
     std::cout << std::setw(18) << PageTableResult(TLBResult(tlbtable, v.TLB.index, v.TLB.tag), v.TABLE.page);
     std::cout << std::setw(17) << std::dec << tlbtable[v.TLB.index].phsyicalpage;
-    std::cout << std::endl     << std::endl;
+    std::cout << std::endl;
       
     UpdateTables(tlbtable, pagetable);
     addresses.pop();
   }
+  
+  std::cout << std::endl;
 }
 
 //===========================================

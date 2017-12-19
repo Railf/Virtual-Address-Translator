@@ -25,7 +25,6 @@
 /* Begin PBXFileReference section */
 		E49EF2391FD66E3F00EC4873 /* Virtual Address Translator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Virtual Address Translator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49EF23C1FD66E3F00EC4873 /* translator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = translator.cpp; sourceTree = "<group>"; };
-		E49EF2431FD66F3E00EC4873 /* virtual-tlb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "virtual-tlb.h"; sourceTree = "<group>"; };
 		E49EF2441FD6708900EC4873 /* tlb-table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tlb-table.h"; sourceTree = "<group>"; };
 		E49EF2451FD670B600EC4873 /* page-table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "page-table.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				E49EF23C1FD66E3F00EC4873 /* translator.cpp */,
-				E49EF2431FD66F3E00EC4873 /* virtual-tlb.h */,
 				E49EF2441FD6708900EC4873 /* tlb-table.h */,
 				E49EF2451FD670B600EC4873 /* page-table.h */,
 			);
