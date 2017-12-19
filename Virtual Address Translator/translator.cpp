@@ -167,6 +167,29 @@ std::string TLBResult (const TLB* tlb, const unsigned int index, const unsigned 
 {
   std::string result = "";
   
+  //=======================================
+  //= MISS
+  //=======================================
+  
+  if (tlb[index].valid == 0)
+  {
+    result = "miss";
+  }
+  
+  else if ((tlb[index].valid == 1) && (tlb[index].tag != tag))
+  {
+    result = "miss";
+  }
+  
+  //=======================================
+  //= HIT
+  //=======================================
+  
+  else
+  {
+    result = "hit";
+  }
+  
   return result;
 }
 
