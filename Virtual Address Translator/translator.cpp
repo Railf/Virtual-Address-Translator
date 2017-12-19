@@ -20,7 +20,7 @@
 //===========================================
 
 std::string TLBResult       (const TLB* tlb, const unsigned int index, const unsigned int tag);
-std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumber);
+std::string PageTableResult (const std::string tlbResult, const unsigned int virtualpage);
 void        UpdateTables    (TLB* tlb, PageTable* pagetable);
 
 //===========================================
@@ -235,7 +235,7 @@ std::string TLBResult (const TLB* tlb, const unsigned int index, const unsigned 
 //= FUNCTION PageTableResult
 //===========================================
 
-std::string PageTableResult (std::string tlbResult, unsigned int virtualPageNumber)
+std::string PageTableResult (const std::string tlbResult, const unsigned int virtualpage)
 {
   std::string result = "";
   
