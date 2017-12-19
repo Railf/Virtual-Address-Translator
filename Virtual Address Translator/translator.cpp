@@ -135,8 +135,6 @@ int main() {
   
   while (!addresses.empty())
   {
-    v.address = addresses.front();
-    
     //==================================
     //= DATA CALCULATIONS
     //==================================
@@ -166,14 +164,18 @@ int main() {
     
     tag = address;
     
+    //==================================
+    //= RESULT DISPLAY
+    //==================================
+    
     std::cout << std::setw(15) << std::hex << addresses.front();
     std::cout << std::setw(16) << std::dec << virtualpage;
     std::cout << std::setw(13) << std::dec << offset;
     std::cout << std::setw(9)  << std::dec << tag;
     std::cout << std::setw(11) << std::dec << index;
-    std::cout << std::setw(12) << TLBResult(tlbtable, v.TLB.index, v.TLB.tag);
-    std::cout << std::setw(18) << PageTableResult(TLBResult(tlbtable, v.TLB.index, v.TLB.tag), v.TABLE.page);
-    std::cout << std::setw(17) << std::dec << tlbtable[v.TLB.index].phsyicalpage;
+    std::cout << std::setw(12) << TLBResult(tlbtable, index, tag);
+    std::cout << std::setw(18) << PageTableResult(TLBResult(tlbtable, index, tag), virtualpage);
+    std::cout << std::setw(17) << std::dec << tlbtable[index].phsyicalpage;
     std::cout << std::endl;
       
     UpdateTables(tlbtable, pagetable);
