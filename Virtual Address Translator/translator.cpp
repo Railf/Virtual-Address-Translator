@@ -19,9 +19,9 @@
 //= FUNCTION PROTOTYPES
 //===========================================
 
-std::string TLBResult       (const TLB* tlb, const unsigned int index, const unsigned int tag);
-std::string PageTableResult (const std::string tlbResult, const unsigned int virtualpage);
-void        UpdateTables    (TLB* tlb, PageTable* pagetable);
+std::string TLBResult       (const TLB*, const unsigned int, const unsigned int);
+std::string PageTableResult (const PageTable*, const std::string, const unsigned int, const unsigned int);
+void        UpdateTables    (TLB*, PageTable*, const unsigned int, const unsigned int, const unsigned int);
 
 //===========================================
 //= END = FUNCTION PROTOTYPES
@@ -174,11 +174,11 @@ int main() {
     std::cout << std::setw(9)  << std::dec << tag;
     std::cout << std::setw(11) << std::dec << index;
     std::cout << std::setw(12) << TLBResult(tlbtable, index, tag);
-    std::cout << std::setw(18) << PageTableResult(TLBResult(tlbtable, index, tag), virtualpage);
+    std::cout << std::setw(18) << PageTableResult(pagetable, TLBResult(tlbtable, index, tag), virtualpage);
+    UpdateTables(tlbtable, pagetable, index, tag, virtualpage); // Physical page calculated here.
     std::cout << std::setw(17) << std::dec << tlbtable[index].phsyicalpage;
     std::cout << std::endl;
-      
-    UpdateTables(tlbtable, pagetable);
+    
     addresses.pop();
   }
   
@@ -235,9 +235,14 @@ std::string TLBResult (const TLB* tlb, const unsigned int index, const unsigned 
 //= FUNCTION PageTableResult
 //===========================================
 
-std::string PageTableResult (const std::string tlbResult, const unsigned int virtualpage)
+std::string PageTableResult (const PageTable* pagetable, const std::string tlbResult, const unsigned int virtualpage, const unsigned int tag)
 {
   std::string result = "";
+  
+  if (tlbResult == "miss")
+  {
+    if (
+  }
   
   return result;
 }
@@ -252,9 +257,24 @@ std::string PageTableResult (const std::string tlbResult, const unsigned int vir
 //= FUNCTION UpdateTables
 //===========================================
 
-void UpdateTables (TLB* tlb, PageTable* pagetable)
+void UpdateTables (TLB* tlb, PageTable* pagetable, const unsigned int index, const unsigned int tag, const unsigned int virtualpage)
 {
-  
+  if ((tlb[index].valid == 1) && (tlb[index].tag != tag))
+  {
+    tlb[index].tag = tag;
+  }
+  else if (tlb[index].tag == 0)
+  {
+    if (pagetable[virtualpage].resident == 1)
+    {
+      tlb[index].phsyicalpage = pagetable[virtualpage].phsyicalpage;
+    }
+    else
+    {
+      pagetable[virtualpage].phsyicalpage = 0;
+      
+    }
+  }
 }
 
 //===========================================
